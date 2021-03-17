@@ -114,16 +114,34 @@ public class TrabajoPractico1 {
 	}
 
 	public static void main(String[] args) {
-		ejercicio1();
-		ejercicio2();
-		ejercicio3();
-		ejercicio4();
-		ejercicio5();
-		ejercicio6();
-		ejercicio7();
-		ejercicio8();
-		ejercicio9();
-		ejercicio10();
+		System.out.println("Bienvenido al TP1:\nPor favor, ingrese el numero de ejercicio que quiere correr. \n"
+				+ "Recuerde que el TP1 incluye los ejercicios 1 a 10 inclusive."
+				+ " Si desea salir, escriba 'salir' o 'exit'.");
+		String resultado = input.nextLine();
+		if (resultado.equals("1")) {
+			ejercicio1();
+		} else if (resultado.equals("2")) {
+			ejercicio2();
+		} else if (resultado.equals("3")) {
+			ejercicio3();
+		} else if (resultado.equals("4")) {
+			ejercicio4();
+		} else if (resultado.equals("5")) {
+			ejercicio5();
+		} else if (resultado.equals("6")) {
+			ejercicio6();
+		} else if (resultado.equals("7")) {
+			ejercicio7();
+		} else if (resultado.equals("8")) {
+			ejercicio8();
+		} else if (resultado.equals("9")) {
+			ejercicio9();
+		} else if (resultado.equals("10")) {
+			ejercicio10();
+		} else if (resultado.equals("salir") || resultado.equals("exit")) {
+			System.exit(0);
+		} else {
+			System.out.println("La opcion ingresada no es valida.");
+		}
 	}
-
 }
