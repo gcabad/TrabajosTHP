@@ -284,29 +284,36 @@ public class TrabajoPractico2 {
 	 */
 	
 	public static void ejercicio21() {
-	System.out.println("Ingrese un numero del 1 al 7 inclusive.");
-	int dia = input.nextInt();
-	String resultado = "";
-	input.nextLine();
-	switch (dia) {
-	case 1: resultado = "Domingo";
-	break;
-	case 2: resultado = "Lunes";
-	break;
-	case 3: resultado = "Martes";
-	break;
-	case 4: resultado = "Miercoles";
-	break;
-	case 5: resultado = "Jueves";
-	break;
-	case 6: resultado = "Viernes";
-	break;
-	case 7: resultado = "Sabado";
-	break;
-	default:
-		resultado = "El dia ingresado no es valido";
-	}
-	System.out.println(resultado);
+		System.out.println("Ingrese un numero del 1 al 7 inclusive.");
+		int dia = input.nextInt();
+		String resultado = "";
+		input.nextLine();
+		switch (dia) {
+		case 1:
+			resultado = "Domingo";
+			break;
+		case 2:
+			resultado = "Lunes";
+			break;
+		case 3:
+			resultado = "Martes";
+			break;
+		case 4:
+			resultado = "Miercoles";
+			break;
+		case 5:
+			resultado = "Jueves";
+			break;
+		case 6:
+			resultado = "Viernes";
+			break;
+		case 7:
+			resultado = "Sabado";
+			break;
+		default:
+			resultado = "El dia ingresado no es valido";
+		}
+		System.out.println(resultado);
 	}
 	
 
