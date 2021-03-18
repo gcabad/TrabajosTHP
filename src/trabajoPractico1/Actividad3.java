@@ -1,8 +1,8 @@
-package trabajosPracticos;
+package trabajoPractico1;
 
 import java.util.Scanner;
 
-public class TrabajoPractico3 {
+public class Actividad3 {
 
 	private static Scanner input = new Scanner(System.in);
 	/*
@@ -29,8 +29,8 @@ public class TrabajoPractico3 {
 		System.out.println("Por favor, ingrese un numero entero:");
 		int numero = input.nextInt();
 		input.nextLine();
-		for(int i = 1; i < 11; i++) {
-			System.out.println(numero*i);
+		for (int i = 1; i < 11; i++) {
+			System.out.println(numero * i);
 		}
 
 	}
@@ -45,6 +45,25 @@ public class TrabajoPractico3 {
 
 	public static void ejercicio24() {
 
+		System.out.println("Ingrese un numero entero:");
+		int numero1 = input.nextInt();
+		input.nextLine();
+		System.out.println("Ingrese otro numero entero:");
+		int numero2 = input.nextInt();
+		while (numero2 < numero1) {
+			input.nextLine();
+			System.out.println("El numero ingresado es invalido. Debe ser mayor o igual a: " + numero1
+					+ ".\nPor favor, ingrese un numero valido:");
+			numero2 = input.nextInt();
+		}
+		System.out.println("Se imprimen los numeros entre " + numero1 + " y " + numero2 + " incluyendolos.");
+		for (int i = numero1; i <= numero2; i++) {
+			System.out.println(i);
+		}
+		System.out.println("Se imprimen los numeros entre " + numero1 + " y " + numero2 + " excluyendolos.");
+		for (int i = numero1 + 1; i < numero2; i++) {
+			System.out.println(i);
+		}
 	}
 
 	/*
@@ -54,7 +73,26 @@ public class TrabajoPractico3 {
 	 */
 
 	public static void ejercicio25() {
-
+		System.out.println("Por favor, ingrese un numero entero:");
+		int x = input.nextInt();
+		input.nextLine();
+		System.out.println("Ingrese ahora otro numero entero:");
+		int y = input.nextInt();
+		input.nextLine();
+		String resultado = "";
+		for (int i = 0; i < x; i++) {
+			String linea = " |";
+			String divisor = "";
+			for (int j = 0; j < y; j++) {
+				linea += "x|";
+				divisor += "---";
+			}
+			resultado += divisor + "\n" + linea + "\n";
+			if (i == x - 1) {
+				resultado += divisor;
+			}
+		}
+		System.out.println(resultado);
 	}
 
 	/*
@@ -63,7 +101,16 @@ public class TrabajoPractico3 {
 	 * que sean a la vez múltiplos de 5.
 	 */
 	public static void ejercicio26() {
-
+		System.out.println("Ingrese un numero natural:");
+		int multiplos = input.nextInt();
+		System.out.println(
+				"Los primeros " + multiplos + " multiplos del 3 sin inlcuir aquellos que lo son tambien del 5, son:");
+		for (int i = 2; i < multiplos + 2; i++) {
+			int salida = 3 * i;
+			if ((salida) % 5 != 0) {
+				System.out.println(salida);
+			}
+		}
 	}
 
 	/*
@@ -72,6 +119,21 @@ public class TrabajoPractico3 {
 	 * impares mayores que 18. [EC]
 	 */
 	public static void ejercicio27() {
+		System.out
+				.println("Por favor, ingrese 5 edades separadas por comas y sin espacios. \nPOR EJEMPLO: 3,29,48,2,17");
+		String edades = input.nextLine();
+		String[] partes = edades.split(",");
+		double promedio = 0;
+		int mayoresEimpares = 0;
+		for (String linea : partes) {
+			int numeroActual = Integer.parseInt(linea);
+			promedio += numeroActual;
+			if (numeroActual > 18 && numeroActual % 2 != 0) {
+				mayoresEimpares++;
+			}
+		}
+		System.out.println("El promedio de edades es: " + (promedio / 5)
+				+ " y la cantidad de edades impares mayores a 18 es de " + mayoresEimpares + ".");
 
 	}
 	/*
@@ -81,7 +143,28 @@ public class TrabajoPractico3 {
 	 */
 
 	public static void ejercicio28() {
-
+		System.out.println("Ingrese la cantidad de numeros que le gustaria que el sistema procese:");
+		int cant = input.nextInt();
+		input.nextLine();
+		if (cant == 0) {
+			System.out.println("La cantidad ingresada es 0. Fin del programa.");
+		} else {
+			int mayor = 0;
+			String resultado = "";
+			for (int i = 1; i <= cant; i++) {
+				System.out.println("Numeros restantes: " + (cant - i + 1) + ".\nIngrese un numero:");
+				int numActual = input.nextInt();
+				if (i == 0) {
+					mayor = numActual;
+				} else {
+					if (numActual > mayor) {
+						mayor = numActual;
+						resultado = "El numero mas grande fue " + mayor + " y se encontraba en la posición: " + i + ".";
+					}
+				}
+			}
+			System.out.println(resultado);
+		}
 	}
 
 	/*
@@ -92,7 +175,15 @@ public class TrabajoPractico3 {
 	 */
 
 	public static void ejercicio29() {
-
+		System.out.println(
+				"Por favor, ingrese la nota. Recuerde que la misma debe estar comprendida en el rango de 0 a 10 inclusive.");
+		int nota = input.nextInt();
+		while (nota > 10 || nota < 0) {
+			input.nextLine();
+			System.out.println("La nota ingresada no es valida. Por favor, ingrese una nota entre 0 y 10 inclusive.");
+			nota = input.nextInt();
+		}
+		System.out.println("Nota aceptada.");
 	}
 
 	/*
@@ -105,7 +196,43 @@ public class TrabajoPractico3 {
 	 */
 
 	public static void ejercicio30() {
-
+		System.out.println("Por favor, indique la operación que desea realizar:\n"
+				+ "- Ingrese '+' para sumar.\n"
+				+ "- Ingrese '-' para restar.\n"
+				+ "- Ingrese '*' para multiplicar.\n"
+				+ "- Ingrese '/' para dividir.\n"
+				+ "- Ingrese 'F' si desea finalizar la ejecución del programa.");
+		String operacion = input.nextLine();
+		while(!operacion.equals("F")) {
+			System.out.println("Ingrese ahora por favor un numero entero:");
+			int numero1 = input.nextInt();
+			input.nextLine();
+			System.out.println("Ingrese ahora el segundo numero entero:");
+			int numero2 = input.nextInt();
+			input.nextLine();
+			if(operacion.equals("/") && numero2 == 0) {
+				System.out.println("No se puede dividir por cero!");
+			} else {
+				switch(operacion) {
+				case "+": System.out.println("El resultado de sumar los dos numeros es: " + (numero1+numero2) + ".");
+				break;
+				case "-": System.out.println("El resultado de restar los dos numeros es: " + (numero1-numero2) + ".");
+				break;
+				case "/": System.out.println("El resultado de dividir los dos numeros es: " + (numero1/numero2) + ".");
+				break;
+				case "*": System.out.println("El resultado de multiplicar los dos numeros es: " + (numero1*numero2) + ".");
+				break;
+				default: System.out.println("Ingreso una operacion que no es valida. Recuerde:\n"
+						+ "- Ingrese '+' para sumar.\n"
+						+ "- Ingrese '-' para restar.\n"
+						+ "- Ingrese '*' para multiplicar.\n"
+						+ "- Ingrese '/' para dividir.\n"
+						+ "- Ingrese 'F' si desea finalizar la ejecución del programa.");
+				}
+			}
+			System.out.println("Por favor, indique la operación que desea realizar ahora:\n");
+			operacion = input.nextLine();
+		}
 	}
 
 	/*

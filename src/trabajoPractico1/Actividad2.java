@@ -1,8 +1,8 @@
-package trabajosPracticos;
+package trabajoPractico1;
 
 import java.util.Scanner;
 
-public class TrabajoPractico2 {
+public class Actividad2 {
 
 	private static Scanner input = new Scanner(System.in);
 
