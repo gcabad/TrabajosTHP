@@ -13,7 +13,7 @@ public class Actividad2 {
 
 	public static void ejercicio11() {
 		System.out.println("Ingrese un numero entero:");
-		int numero = input.nextInt();
+		int numero = Integer.parseInt(input.nextLine());
 		if (numero == 0) {
 			System.out.println("El numero ingresado es el 0.");
 		} else if (numero % 2 == 0) {
@@ -30,10 +30,9 @@ public class Actividad2 {
 
 	public static void ejercicio12() {
 		System.out.println("Por favor, ingrese un numero entero:");
-		int numero1 = input.nextInt();
-		input.nextLine();
+		int numero1 = Integer.parseInt(input.nextLine());
 		System.out.println("Ingrese ahora el segundo numero entero:");
-		int numero2 = input.nextInt();
+		int numero2 = Integer.parseInt(input.nextLine());
 		if (numero1 > numero2) {
 			System.out.println("El numero mas grande es el primero.");
 		} else if (numero1 < numero2) {
@@ -50,16 +49,20 @@ public class Actividad2 {
 
 	public static void ejercicio13() {
 		System.out.println("Por favor, ingrese un numero entero:");
-		int numero1 = input.nextInt();
-		input.nextLine();
+		int numero1 = Integer.parseInt(input.nextLine());
 		System.out.println("Ingrese ahora el segundo numero entero:");
-		int numero2 = input.nextInt();
-		if (numero1 > numero2) {
-			System.out.println("El numero mas grande es: " + numero1 + ".");
-		} else if (numero1 < numero2) {
-			System.out.println("El numero mas grande es: " + numero2 + ".");
+		int numero2 = Integer.parseInt(input.nextLine());
+		System.out.println("Ingrese ahora el tercer numero entero:");
+		int numero3 = Integer.parseInt(input.nextLine());
+		
+		if (numero1 > numero2 && numero1 > numero2) {
+			System.out.println("El primer numero es el mas grande. Su valor es: " + numero1 + ".");
+		} else if (numero2 > numero1 && numero2 > numero3 ) {
+			System.out.println("El segundo numero es el mas grande. Su valor es: " + numero2 + ".");
+		} else if (numero3 > numero1 && numero3 > numero2){
+			System.out.println("El tercer numero es el mas grande. Su valor es: " + numero3 + ".");
 		} else {
-			System.out.println("Los numeros son iguales.");
+			System.out.println("No hay un numero que sea mayor a los otros dos.");
 		}
 	}
 
@@ -81,10 +84,17 @@ public class Actividad2 {
 		System.out.println("Por favor, ingrese el nombre de la persona:");
 		String nombre = input.nextLine();
 		System.out.println("Ingrese ahora la edad de la persona:");
-		int edad = input.nextInt();
-		input.nextLine();
+		int edad = Integer.parseInt(input.nextLine());
+		while (edad <= 0) {
+			System.out.println("La edad ingresada no es valida. Por favor, ingrese una edad mayor a 0");
+			edad = Integer.parseInt(input.nextLine());
+		}
 		System.out.println("Ingrese ahora la altura correspondiente:");
-		double altura = input.nextDouble();
+		double altura = Double.parseDouble(input.nextLine());
+		while (altura <= 0) {
+			System.out.println("La altura ingresada no es valida. Por favor, ingrese una altura mayor a 0");
+			edad = Integer.parseInt(input.nextLine());
+		}
 		if (edad >= 7 && altura > 1.50) {
 			System.out.println("Autorizado " + nombre + " a ingresar a la montaña rusa.");
 		} else {
@@ -110,10 +120,17 @@ public class Actividad2 {
 		System.out.println("Por favor, ingrese el nombre de la persona:");
 		String nombre = input.nextLine();
 		System.out.println("Ingrese ahora la edad de la persona:");
-		int edad = input.nextInt();
-		input.nextLine();
+		int edad = Integer.parseInt(input.nextLine());
+		while (edad <= 0) {
+			System.out.println("La edad ingresada no es valida. Por favor, ingrese una edad mayor a 0");
+			edad = Integer.parseInt(input.nextLine());
+		}
 		System.out.println("Ingrese ahora la altura correspondiente:");
-		double altura = input.nextDouble();
+		double altura = Double.parseDouble(input.nextLine());
+		while (altura <= 0) {
+			System.out.println("La altura ingresada no es valida. Por favor, ingrese una altura mayor a 0");
+			edad = Integer.parseInt(input.nextLine());
+		}
 		if (edad > 6 || altura > 1.50) {
 			System.out.println("Autorizado " + nombre + " a ingresar a la montaña rusa.");
 		} else {
@@ -131,10 +148,17 @@ public class Actividad2 {
 
 	public static void ejercicio16() {
 		System.out.println("Ingrese la cantidad de personas inscriptas a la conferencia:");
-		int inscriptos = input.nextInt();
-		input.nextLine();
+		int inscriptos = Integer.parseInt(input.nextLine());
+		while (inscriptos < 0) {
+			System.out.println("El numero ingresado no es valido. Por favor, ingrese un numero mayor o igual a 0.");
+			inscriptos = Integer.parseInt(input.nextLine());
+		}
 		System.out.println("Ingrese la cantidad de asientos disponibles en la conferencia:");
-		int asientosDisponibles = input.nextInt();
+		int asientosDisponibles = Integer.parseInt(input.nextLine());
+		while (asientosDisponibles < 0) {
+			System.out.println("El numero ingresado no es valido. Por favor, ingrese un numero mayor o igual a 0.");
+			asientosDisponibles = Integer.parseInt(input.nextLine());
+		}
 		if(asientosDisponibles >= inscriptos) {
 			System.out.println("Los asientos alcanzan. Sobran: " + (asientosDisponibles - inscriptos) + " asientos.");
 		} else {
@@ -153,15 +177,18 @@ public class Actividad2 {
 	
 	public static void ejercicio17() {
 		System.out.println("Bienvenido, por favor ingrese su edad:");
-		int edad = input.nextInt();
-		input.nextLine();
+		int edad = Integer.parseInt(input.nextLine());
+		while (edad < 1 || edad > 120) {
+			System.out.println("La edad ingresada es invalida, por favor ingrese un numero entre 1 y 120 inclusive.");
+			edad = Integer.parseInt(input.nextLine());
+		}
 		System.out.println("Ahora ingrese su genero, ingresando 'F' para Femenino y 'M' para Masculino.");
-		String genero = input.nextLine();
-		if (edad < 1 && edad > 120) {
-			System.out.println("La edad ingresada es invalida");
-		} else if (!genero.equals("F") && !genero.equals("M")) {
-			System.out.println("El genero ingresado es invalido");
-		} else if ((genero.equals("F") && edad >= 60)||(genero.equals("M") && edad >=65)){
+		String genero = input.nextLine().toUpperCase();
+		while(!genero.equals("F") && !genero.equals("M")) {
+			System.out.println("El genero ingresado es invalido. Por favor, ingrese 'F' para femenino y 'M' para Masculino");
+			genero = input.nextLine().toUpperCase();
+		}
+		if ((genero.equals("F") && edad >= 60) || (genero.equals("M") && edad >= 65)) {
 			System.out.println("Usted se puede jubilar.");
 		} else {
 			System.out.println("Usted no se encuentra en edad de jubilación.");
@@ -178,10 +205,9 @@ public class Actividad2 {
 	
 	public static void ejercicio18() {
 		System.out.println("Por favor, ingrese un numero entero:");
-		int numero1 = input.nextInt();
-		input.nextLine();
+		int numero1 = Integer.parseInt(input.nextLine());
 		System.out.println("Por favor, ingrese otro numero entero:");
-		int numero2 = input.nextInt();
+		int numero2 = Integer.parseInt(input.nextLine());
 		if (numero1 > numero2) {
 			if (numero2 == 0) {
 				System.out.println("ERROR: No se puede dividir por 0.");
@@ -219,25 +245,15 @@ public class Actividad2 {
 	 * los resultados tal como se hizo en los ejercicios anteriores.
 	 */
 	
-	public static void ejercicio19() {
-		boolean esDeUnSoloDigito = false;
-		boolean esImpar = false;
-		boolean estaEnAmbos = false;
-		boolean noEstaEnNinguno = false;
-		
+	public static void ejercicio19() {		
 		System.out.println("Ingrese un numero entero:");
-		int numero = input.nextInt();
-		if (numero >= 0 && numero <= 9) {
-			esDeUnSoloDigito = true;
-		}
-		if (numero % 2 != 0) {
-			esImpar = true;
-		}
-		if (esDeUnSoloDigito && esImpar) {
-			estaEnAmbos = true;
-		} else if (!esDeUnSoloDigito && !esImpar) {
-			noEstaEnNinguno = true;
-		}
+		int numero = Integer.parseInt(input.nextLine());
+		
+		boolean esDeUnSoloDigito = (numero >= -9) && (numero <= 9);
+		boolean esImpar = numero%2 != 0;
+		boolean estaEnAmbos = esDeUnSoloDigito && esImpar;
+		boolean noEstaEnNinguno = !esImpar && !esDeUnSoloDigito;
+
 		System.out.println("El resultado es el siguinte: \n Es de un solo digito? " + esDeUnSoloDigito  
 				+ "\n Es impar? " + esImpar 
 				+ "\n Esta en ambas categorias? " + estaEnAmbos 
@@ -254,10 +270,9 @@ public class Actividad2 {
 	
 	public static void ejercicio20() {
 		System.out.println("Bienvenido, ingrese un numero:");
-		double num1 = input.nextInt();
+		int num1 = Integer.parseInt(input.nextLine());
 		System.out.println("Ahora ingrese un segundo numero: ");
-		double num2 = input.nextInt();
-		input.nextLine();
+		int num2 = Integer.parseInt(input.nextLine());
 		System.out.println("Ahora ingrese la operacion a realizar:");
 		String entrada = input.nextLine();
 		if (entrada.equals("/") && num2 != 0) {
@@ -285,9 +300,12 @@ public class Actividad2 {
 	
 	public static void ejercicio21() {
 		System.out.println("Ingrese un numero del 1 al 7 inclusive.");
-		int dia = input.nextInt();
+		int dia = Integer.parseInt(input.nextLine());
+		while (dia > 7 || dia < 1) {
+			System.out.println("El numero ingresado no es valido. Ingrese un numero entre 1 y 7 inclusive.");
+			dia = Integer.parseInt(input.nextLine());
+		}
 		String resultado = "";
-		input.nextLine();
 		switch (dia) {
 		case 1:
 			resultado = "Domingo";
@@ -318,36 +336,71 @@ public class Actividad2 {
 	
 
 	public static void main(String[] args) {
-		System.out.println("Bienvenido al TP2:\nPor favor, ingrese el numero de ejercicio que quiere correr. \n"
-				+ "Recuerde que el TP2 incluye los ejercicios 11 a 21 inclusive."
+		String msjPrincipalInicial = ("Por favor, ingrese el numero de ejercicio que quiere ejecutar. \n"
+				+ "Recuerde que la actividad 2 del TP1 incluye los ejercicios 11 a 21 inclusive."
 				+ " Si desea salir, escriba 'salir' o 'exit'.");
+		String msjEjecucion;
+		String msjPrincipal;
+		
+		System.out.println("Bienvenido a la actividad 2 del TP1");
+		
+		System.out.println(msjPrincipalInicial);
 		String resultado = input.nextLine();
-		if (resultado.equals("11")) {
-			ejercicio11();
-		} else if (resultado.equals("12")) {
-			ejercicio12();
-		} else if (resultado.equals("13")) {
-			ejercicio13();
-		} else if (resultado.equals("14")) {
-			ejercicio14();
-		} else if (resultado.equals("15")) {
-			ejercicio15();
-		} else if (resultado.equals("16")) {
-			ejercicio16();
-		} else if (resultado.equals("17")) {
-			ejercicio17();
-		} else if (resultado.equals("18")) {
-			ejercicio18();
-		} else if (resultado.equals("19")) {
-			ejercicio19();
-		} else if (resultado.equals("20")) {
-			ejercicio20();
-		} else if (resultado.equals("21")) {
-			ejercicio21();
-		} else if (resultado.equals("salir") || resultado.equals("exit")) {
-			System.exit(0);
-		} else {
-			System.out.println("La opcion ingresada no es valida.");
+		
+		while (!resultado.equals("salir") && !resultado.equals("exit")) {
+			
+			msjEjecucion = "------ Ejecutando ejercicio " + resultado + " ------\n";
+			msjPrincipal = "\n------ Ejecucion finalizada -----\n" + msjPrincipalInicial;
+			
+			if (resultado.equals("11")) {
+				System.out.println(msjEjecucion);
+				ejercicio11();
+				System.out.println(msjPrincipal);
+			} else if (resultado.equals("12")) {
+				System.out.println(msjEjecucion);
+				ejercicio12();
+				System.out.println(msjPrincipal);
+			} else if (resultado.equals("13")) {
+				System.out.println(msjEjecucion);
+				ejercicio13();
+				System.out.println(msjPrincipal);
+			} else if (resultado.equals("14")) {
+				System.out.println(msjEjecucion);
+				ejercicio14();
+				System.out.println(msjPrincipal);
+			} else if (resultado.equals("15")) {
+				System.out.println(msjEjecucion);
+				ejercicio15();
+				System.out.println(msjPrincipal);
+			} else if (resultado.equals("16")) {
+				System.out.println(msjEjecucion);
+				ejercicio16();
+				System.out.println(msjPrincipal);
+			} else if (resultado.equals("17")) {
+				System.out.println(msjEjecucion);
+				ejercicio17();
+				System.out.println(msjPrincipal);
+			} else if (resultado.equals("18")) {
+				System.out.println(msjEjecucion);
+				ejercicio18();
+				System.out.println(msjPrincipal);
+			} else if (resultado.equals("19")) {
+				System.out.println(msjEjecucion);
+				ejercicio19();
+				System.out.println(msjPrincipal);
+			} else if (resultado.equals("20")) {
+				System.out.println(msjEjecucion);
+				ejercicio20();
+				System.out.println(msjPrincipal);
+			} else if (resultado.equals("21")) {
+				System.out.println(msjEjecucion);
+				ejercicio21();
+				System.out.println(msjPrincipal);
+			} else {
+				System.out.println("La opcion ingresada no es valida. \n"
+						+ "Debe ingresar un numero del 11 al 20 inclusive para ejecutar el ejercicio correspondiente o 'salir' o 'exit' para terminar.");	
+			}
+			resultado = input.nextLine();
 		}
 	}
 }

@@ -27,8 +27,7 @@ public class Actividad3 {
 
 	public static void ejercicio23() {
 		System.out.println("Por favor, ingrese un numero entero:");
-		int numero = input.nextInt();
-		input.nextLine();
+		int numero = Integer.parseInt(input.nextLine());
 		for (int i = 1; i < 11; i++) {
 			System.out.println(numero * i);
 		}
@@ -46,15 +45,13 @@ public class Actividad3 {
 	public static void ejercicio24() {
 
 		System.out.println("Ingrese un numero entero:");
-		int numero1 = input.nextInt();
-		input.nextLine();
+		int numero1 = Integer.parseInt(input.nextLine());
 		System.out.println("Ingrese otro numero entero:");
-		int numero2 = input.nextInt();
+		int numero2 = Integer.parseInt(input.nextLine());
 		while (numero2 < numero1) {
-			input.nextLine();
-			System.out.println("El numero ingresado es invalido. Debe ser mayor o igual a: " + numero1
+			System.out.println("El numero ingresado es invalido. Debe ser mayor o igual a " + numero1
 					+ ".\nPor favor, ingrese un numero valido:");
-			numero2 = input.nextInt();
+			numero2 = Integer.parseInt(input.nextLine());
 		}
 		System.out.println("Se imprimen los numeros entre " + numero1 + " y " + numero2 + " incluyendolos.");
 		for (int i = numero1; i <= numero2; i++) {
@@ -74,27 +71,16 @@ public class Actividad3 {
 
 	public static void ejercicio25() {
 		System.out.println("Por favor, ingrese un numero entero:");
-		int x = input.nextInt();
-		input.nextLine();
+		int x = Integer.parseInt(input.nextLine());
 		System.out.println("Ingrese ahora otro numero entero:");
-		int y = input.nextInt();
-		input.nextLine();
-		String resultado = "";
+		int y = Integer.parseInt(input.nextLine());
 		for (int i = 0; i < x; i++) {
-			String linea = " |";
-			String divisor = "";
 			for (int j = 0; j < y; j++) {
-				linea += "x|";
-				divisor += "---";
+				System.out.print('X');
 			}
-			resultado += divisor + "\n" + linea + "\n";
-			if (i == x - 1) {
-				resultado += divisor;
-			}
+			System.out.println();
 		}
-		System.out.println(resultado);
 	}
-
 	/*
 	 * 26.Realizá un programa que permita al usuario ingresar un número natural n.
 	 * La computadora debe mostrar los primeros n múltiplos de 3 excepto aquellos
@@ -102,10 +88,14 @@ public class Actividad3 {
 	 */
 	public static void ejercicio26() {
 		System.out.println("Ingrese un numero natural:");
-		int multiplos = input.nextInt();
+		int numero = Integer.parseInt(input.nextLine());
+		while (numero <= 0) {
+			System.out.println("El numero ingresado no es valido. Recuerde, los numeros naturales son aquellos que son enteros mayores a 0. Vuelva a ingresarlo: ");
+			numero = Integer.parseInt(input.nextLine());
+		}
 		System.out.println(
-				"Los primeros " + multiplos + " multiplos del 3 sin inlcuir aquellos que lo son tambien del 5, son:");
-		for (int i = 2; i < multiplos + 2; i++) {
+				"Los primeros " + numero + " multiplos del 3 sin incluir aquellos que lo son tambien del 5, son:");
+		for (int i = 1; i <= numero ; i++) {
 			int salida = 3 * i;
 			if ((salida) % 5 != 0) {
 				System.out.println(salida);
@@ -119,23 +109,25 @@ public class Actividad3 {
 	 * impares mayores que 18. [EC]
 	 */
 	public static void ejercicio27() {
-		System.out
-				.println("Por favor, ingrese 5 edades separadas por comas y sin espacios. \nPOR EJEMPLO: 3,29,48,2,17");
-		String edades = input.nextLine();
-		String[] partes = edades.split(",");
 		double promedio = 0;
-		int mayoresEimpares = 0;
-		for (String linea : partes) {
-			int numeroActual = Integer.parseInt(linea);
-			promedio += numeroActual;
-			if (numeroActual > 18 && numeroActual % 2 != 0) {
-				mayoresEimpares++;
+		int mayoresEImpares = 0;
+		for (int i = 0; i < 5; i++) {
+			System.out.println("Por favor, ingrese una edad.");
+			int edad = Integer.parseInt(input.nextLine());
+			while (edad < 0) {
+				System.out.println("La edad ingresada no es valida. por favor, ingrese una edad mayor a 0.");
+				edad = Integer.parseInt(input.nextLine());
+			}
+			promedio += edad;
+			if (edad > 18 && edad % 2 != 0) {
+				mayoresEImpares++;
 			}
 		}
-		System.out.println("El promedio de edades es: " + (promedio / 5)
-				+ " y la cantidad de edades impares mayores a 18 es de " + mayoresEimpares + ".");
 
+		System.out.println("El promedio de edades es: " + (promedio / 5)
+				+ " y la cantidad de edades impares mayores a 18 es de " + mayoresEImpares + ".");
 	}
+		
 	/*
 	 * 28.Realizá un programa que a partir de un número entero cant ingresado por el
 	 * usuario permita cargar por teclado cant números enteros. La computadora debe
@@ -144,8 +136,11 @@ public class Actividad3 {
 
 	public static void ejercicio28() {
 		System.out.println("Ingrese la cantidad de numeros que le gustaria que el sistema procese:");
-		int cant = input.nextInt();
-		input.nextLine();
+		int cant = Integer.parseInt(input.nextLine());
+		while (cant < 0) {
+			System.out.println("El numero ingresado no es valido. Ingrese un numero mayor a 0 o 0 para salir.");
+			cant = Integer.parseInt(input.nextLine());
+		}
 		if (cant == 0) {
 			System.out.println("La cantidad ingresada es 0. Fin del programa.");
 		} else {
@@ -153,8 +148,8 @@ public class Actividad3 {
 			String resultado = "";
 			for (int i = 1; i <= cant; i++) {
 				System.out.println("Numeros restantes: " + (cant - i + 1) + ".\nIngrese un numero:");
-				int numActual = input.nextInt();
-				if (i == 0) {
+				int numActual = Integer.parseInt(input.nextLine());
+				if (i == 1) {
 					mayor = numActual;
 				} else {
 					if (numActual > mayor) {
@@ -177,13 +172,12 @@ public class Actividad3 {
 	public static void ejercicio29() {
 		System.out.println(
 				"Por favor, ingrese la nota. Recuerde que la misma debe estar comprendida en el rango de 0 a 10 inclusive.");
-		int nota = input.nextInt();
+		int nota = Integer.parseInt(input.nextLine());
 		while (nota > 10 || nota < 0) {
-			input.nextLine();
 			System.out.println("La nota ingresada no es valida. Por favor, ingrese una nota entre 0 y 10 inclusive.");
-			nota = input.nextInt();
+			nota = Integer.parseInt(input.nextLine());
 		}
-		System.out.println("Nota aceptada.");
+		System.out.println("Nota aceptada. La misma es: " + nota + ".");
 	}
 
 	/*
@@ -196,42 +190,47 @@ public class Actividad3 {
 	 */
 
 	public static void ejercicio30() {
-		System.out.println("Por favor, indique la operación que desea realizar:\n"
-				+ "- Ingrese '+' para sumar.\n"
-				+ "- Ingrese '-' para restar.\n"
-				+ "- Ingrese '*' para multiplicar.\n"
-				+ "- Ingrese '/' para dividir.\n"
-				+ "- Ingrese 'F' si desea finalizar la ejecución del programa.");
-		String operacion = input.nextLine();
-		while(!operacion.equals("F")) {
-			System.out.println("Ingrese ahora por favor un numero entero:");
-			int numero1 = input.nextInt();
-			input.nextLine();
-			System.out.println("Ingrese ahora el segundo numero entero:");
-			int numero2 = input.nextInt();
-			input.nextLine();
-			if(operacion.equals("/") && numero2 == 0) {
-				System.out.println("No se puede dividir por cero!");
-			} else {
-				switch(operacion) {
-				case "+": System.out.println("El resultado de sumar los dos numeros es: " + (numero1+numero2) + ".");
-				break;
-				case "-": System.out.println("El resultado de restar los dos numeros es: " + (numero1-numero2) + ".");
-				break;
-				case "/": System.out.println("El resultado de dividir los dos numeros es: " + (numero1/numero2) + ".");
-				break;
-				case "*": System.out.println("El resultado de multiplicar los dos numeros es: " + (numero1*numero2) + ".");
-				break;
-				default: System.out.println("Ingreso una operacion que no es valida. Recuerde:\n"
-						+ "- Ingrese '+' para sumar.\n"
-						+ "- Ingrese '-' para restar.\n"
-						+ "- Ingrese '*' para multiplicar.\n"
-						+ "- Ingrese '/' para dividir.\n"
-						+ "- Ingrese 'F' si desea finalizar la ejecución del programa.");
-				}
-			}
-			System.out.println("Por favor, indique la operación que desea realizar ahora:\n");
+		String errorMsg = "Ingreso una operacion que no es valida. Recuerde:\n"
+				+ "- Ingrese '+' para sumar.\n" + "- Ingrese '-' para restar.\n"
+				+ "- Ingrese '*' para multiplicar.\n" + "- Ingrese '/' para dividir.\n"
+				+ "- Ingrese 'F' si desea finalizar la ejecución del programa.";
+		String operacion = "";
+		
+		System.out.println("Por favor, indique la operación que desea realizar:\n");
+		operacion = input.nextLine();
+		while (!operacion.equals("F") && !operacion.equals("+") && !operacion.equals("-") && !operacion.equals("*") && !operacion.equals("/")) {
+			System.out.println(errorMsg);
 			operacion = input.nextLine();
+		}
+		while (!operacion.equals("F")) {			
+			System.out.println("Ingrese ahora por favor un numero entero:");
+			int numero1 = Integer.parseInt(input.nextLine());
+			System.out.println("Ingrese ahora el segundo numero entero:");
+			int numero2 = Integer.parseInt(input.nextLine());
+				switch (operacion) {
+				case "+":
+					System.out.println("El resultado de sumar los dos numeros es: " + (numero1 + numero2) + ".");
+					break;
+				case "-":
+					System.out.println("El resultado de restar los dos numeros es: " + (numero1 - numero2) + ".");
+					break;
+				case "/":
+					if(numero2 == 0) {
+						System.out.println("ERROR: No se puede dividir por 0.");
+					} else {
+					System.out.println("El resultado de dividir los dos numeros es: " + (numero1 / numero2) + ".");
+					}
+					break;
+				case "*":
+					System.out.println("El resultado de multiplicar los dos numeros es: " + (numero1 * numero2) + ".");
+					break;
+				}
+			System.out.println("Por favor, indique la operación que desea realizar:\n");
+			operacion = input.nextLine();
+			while (!operacion.equals("F") && !operacion.equals("+") && !operacion.equals("-") && !operacion.equals("*") && !operacion.equals("/")) {
+				System.out.println(errorMsg);
+				operacion = input.nextLine();
+			}
 		}
 	}
 
@@ -245,7 +244,37 @@ public class Actividad3 {
 	 * do-while.
 	 */
 	public static void ejercicio31() {
-
+		
+		//OPCION A: CICLO WHILE.
+		System.out.println("-------------------\nejercicio con WHILE\n-------------------");
+		
+		System.out.println("ingrese una opcion:");
+		String opcion = input.nextLine();
+		System.out.println("Usted ingreso: " + opcion + ".\n¿Deseás continuar? [S/N]");
+		String continuar = input.nextLine().toUpperCase();
+		while(!continuar.equals("S") && !continuar.equals("N")) {
+			System.out.println("La opcion ingresada es incorrecta. Por favor, elija S si desea continuar, o N si quiere modificar su opcion");
+			continuar = input.nextLine().toUpperCase();
+		}
+		while(continuar.equals("N")) {
+			System.out.println("ingrese otra opcion:");
+			opcion = input.nextLine();
+			System.out.println("Usted ingreso: " + opcion + ".\n¿Deseás continuar? [S/N]");
+			continuar = input.nextLine().toUpperCase();
+		}
+		System.out.println("-------------------\nejercicio con DO-WHILE\n-------------------");
+		//OPCION B: CICLO DO-WHILE.
+		String continuar2 = "";
+			do {
+				System.out.println("ingrese una opcion:");
+				String opcion2 = input.nextLine();
+				System.out.println("Usted ingreso: " + opcion2 + ".\n¿Deseás continuar? [S/N]");
+				continuar2 = input.nextLine().toUpperCase();
+				while (!continuar2.equals("S") && !continuar2.equals("N")) {
+					System.out.println("La opcion ingresada es incorrecta. Por favor, elija S si desea continuar, o N si quiere modificar su opcion");
+					continuar2 = input.nextLine().toUpperCase();
+				}
+			} while(continuar2.equals("N"));
 	}
 
 	/*
@@ -255,7 +284,13 @@ public class Actividad3 {
 	 * las notas válidas pueden ser un 2 o un valor entre 4 y 10. [EC]
 	 */
 	public static void ejercicio32() {
-
+		System.out.println("Bienvenido, por favor ingrese la nota de un examen:");
+		int nota = Integer.parseInt(input.nextLine());
+		while(nota != 2 && !(nota >= 4 && nota <= 10)) {
+			System.out.println("La nota ingresada no es valida. Por favor, ingrese otra nota:");
+			nota = Integer.parseInt(input.nextLine());
+		} 
+		System.out.println("La nota ingresada es valida.");
 	}
 
 	/*
@@ -265,7 +300,24 @@ public class Actividad3 {
 	 */
 
 	public static void ejercicio33() {
-
+		System.out.println("Introduzca un numero:");
+		int numero = Integer.parseInt(input.nextLine());
+		if (numero == 0) {
+			System.out.println("No ha introducido numeros. La ejecucion ha finalizado.");
+			System.exit(0);
+		}
+		int max = 0;
+		int min = 0;
+		while (numero != 0) {
+			if(numero > max ) {
+				max = numero;
+			} else if (numero < min) {
+				min = numero;
+			}
+			System.out.println("Introduzca otro numero o 0 para salir.");
+			numero = Integer.parseInt(input.nextLine());
+		}
+		System.out.println("Ejecucion finalizada. El numero maximo ha sido: " + max + " y el minimo fue: " + min + ".");
 	}
 
 	/*
@@ -274,7 +326,21 @@ public class Actividad3 {
 	 * ingresar cero. Calcular y mostrar la estatura promedio del equipo.
 	 */
 	public static void ejercicio34() {
-
+		double alturasSumadas = 0.00;
+		int cantIngresos = 0;
+		System.out.println("Bienvenido, por favor ingrese la altura del jugador o ingrese 0 para finalizar");
+		double altura = Double.parseDouble(input.nextLine());
+		while (altura != 0.00) {
+			cantIngresos++;
+			alturasSumadas += altura;
+			System.out.println("Por favor, ingrese una nueva altura o ingrese 0 para finalizar.");
+			altura = Double.parseDouble(input.nextLine());
+		}
+		if (alturasSumadas == 0.00) {
+			System.out.println("No ha ingresado ninguna altura nueva. Ejecución finalizada.");
+		} else {
+		System.out.println("La altura promedio del equipo es de: "  + alturasSumadas/cantIngresos + ".");
+		}
 	}
 
 	/*
@@ -285,7 +351,32 @@ public class Actividad3 {
 	 */
 
 	public static void ejercicio35() {
-
+		System.out.println("Ingrese a continuacion el nombre de la persona o '*' para salir.");
+		String nombre = input.nextLine();
+		int edad = 0;
+		String nombreMasJoven = "not_existent_name";
+		int edadMasJoven = -1;
+		while (!nombre.equals("*")) {
+			System.out.println("Ingrese ahora la edad de la persona");
+			edad = Integer.parseInt(input.nextLine());
+			while (edad < 0) {
+				System.out.println("La edad ingresada no es valida. Por favor, ingrese un numero mayor o igual a 0.");
+				edad = Integer.parseInt(input.nextLine()); 
+			}
+			if (edadMasJoven == -1) {
+				edadMasJoven = edad;
+			} else if (edad < edadMasJoven) {
+				edadMasJoven = edad;
+				nombreMasJoven = nombre;
+			}
+			System.out.println("Ingrese el nombre de la proxima persona a cargar, o ingrese '*' para salir.");
+			nombre = input.nextLine();
+		}
+		if (edadMasJoven == -1) {
+			System.out.println("La ejecucion fue finalizada sin ingresar nombres");
+		} else {
+			System.out.println("La persona mas joven es: " + nombreMasJoven + " con " + edadMasJoven + " años.");
+		}
 	}
 
 	/*
@@ -297,7 +388,18 @@ public class Actividad3 {
 	 */
 
 	public static void ejercicio36() {
-
+		int numero = 0;
+		int cant = 0;
+		System.out.println("Bienvenido! Usted podra ingresar numeros mientras el promedio de todo sea menor a 20");
+		do {
+			numero += Integer.parseInt(input.nextLine());
+			cant++;
+		} while (numero/cant < 20);
+		if (cant == 1) {
+		System.out.println("Usted ingreso " + cant + " numero.");
+		} else {
+			System.out.println("Usted ingreso " + cant + " numeros.");
+		}
 	}
 
 	/*
@@ -310,7 +412,16 @@ public class Actividad3 {
 	 */
 
 	public static void ejercicio37() {
-
+		int cantIngresada = 1;
+		int total = 0;
+		int valorMes = 0;
+		do {
+			total += valorMes;
+			System.out.println("Ingrese el sueldo correspondiente al mes " + cantIngresada + ":");
+			valorMes = Integer.parseInt(input.nextLine());
+			cantIngresada++;
+		} while (cantIngresada <= 12 && valorMes >= 0); 
+		System.out.println("El monto percibido por el empleado es de " + total + ".");
 	}
 
 	/*
@@ -324,52 +435,118 @@ public class Actividad3 {
 	 */
 
 	public static void ejercicio38() {
+		final String usuario = "admin";
+		final String contraseña = "123456";
+		String tmpUsuario = "";
+		String tmpContraseña = "";
+		int intentos = 0;
+		
+		while (!tmpUsuario.equals(usuario) && !tmpContraseña.equals(contraseña) && intentos < 3) {
+			System.out.println("Ingrese su nombre de usuario:");
+			tmpUsuario = input.nextLine();
+			System.out.println("Ingrese su contraseña:");
+			tmpContraseña = input.nextLine();
+			intentos++;
+		}
+		
+		if(tmpUsuario.equals(usuario) && tmpContraseña.equals(contraseña)) {
+			System.out.println("Acceso concedido");
+		} else {
+			System.out.println("Se ha bloqueado la cuenta");
+		}
 
 	}
 
 	public static void main(String[] args) {
-		System.out.println("Bienvenido al TP3:\nPor favor, ingrese el numero de ejercicio que quiere correr. \n"
-				+ "Recuerde que el TP3 incluye los ejercicios 22 a 38 inclusive."
+		String msjPrincipalInicial = ("Por favor, ingrese el numero de ejercicio que quiere ejecutar. \n"
+				+ "Recuerde que la actividad 3 del TP1 incluye los ejercicios 22 a 38 inclusive."
 				+ " Si desea salir, escriba 'salir' o 'exit'.");
+		String msjEjecucion;
+		String msjPrincipal;
+		
+		System.out.println("Bienvenido a la actividad 3 del TP1");
+		
+		System.out.println(msjPrincipalInicial);
 		String resultado = input.nextLine();
-		if (resultado.equals("22")) {
-			ejercicio22();
-		} else if (resultado.equals("23")) {
-			ejercicio23();
-		} else if (resultado.equals("24")) {
-			ejercicio24();
-		} else if (resultado.equals("25")) {
-			ejercicio25();
-		} else if (resultado.equals("26")) {
-			ejercicio26();
-		} else if (resultado.equals("27")) {
-			ejercicio27();
-		} else if (resultado.equals("28")) {
-			ejercicio28();
-		} else if (resultado.equals("29")) {
-			ejercicio29();
-		} else if (resultado.equals("30")) {
-			ejercicio30();
-		} else if (resultado.equals("31")) {
-			ejercicio31();
-		} else if (resultado.equals("32")) {
-			ejercicio32();
-		} else if (resultado.equals("33")) {
-			ejercicio33();
-		} else if (resultado.equals("34")) {
-			ejercicio34();
-		} else if (resultado.equals("35")) {
-			ejercicio35();
-		} else if (resultado.equals("36")) {
-			ejercicio36();
-		} else if (resultado.equals("37")) {
-			ejercicio37();
-		} else if (resultado.equals("38")) {
-			ejercicio38();
-		} else if (resultado.equals("salir") || resultado.equals("exit")) {
-			System.exit(0);
-		} else {
-			System.out.println("La opcion ingresada no es valida.");
+		
+		while (!resultado.equals("salir") && !resultado.equals("exit")) {
+			
+			msjEjecucion = "------ Ejecutando ejercicio " + resultado + " ------\n";
+			msjPrincipal = "\n------ Ejecucion finalizada -----\n" + msjPrincipalInicial;
+			
+			if (resultado.equals("22")) {
+				System.out.println(msjEjecucion);
+				ejercicio22();
+				System.out.println(msjPrincipal);
+			} else if (resultado.equals("23")) {
+				System.out.println(msjEjecucion);
+				ejercicio23();
+				System.out.println(msjPrincipal);
+			} else if (resultado.equals("24")) {
+				System.out.println(msjEjecucion);
+				ejercicio24();
+				System.out.println(msjPrincipal);
+			} else if (resultado.equals("25")) {
+				System.out.println(msjEjecucion);
+				ejercicio25();
+				System.out.println(msjPrincipal);
+			} else if (resultado.equals("26")) {
+				System.out.println(msjEjecucion);
+				ejercicio26();
+				System.out.println(msjPrincipal);
+			} else if (resultado.equals("27")) {
+				System.out.println(msjEjecucion);
+				ejercicio27();
+				System.out.println(msjPrincipal);
+			} else if (resultado.equals("28")) {
+				System.out.println(msjEjecucion);
+				ejercicio28();
+				System.out.println(msjPrincipal);
+			} else if (resultado.equals("29")) {
+				System.out.println(msjEjecucion);
+				ejercicio29();
+				System.out.println(msjPrincipal);
+			} else if (resultado.equals("30")) {
+				System.out.println(msjEjecucion);
+				ejercicio30();
+				System.out.println(msjPrincipal);
+			} else if (resultado.equals("31")) {
+				System.out.println(msjEjecucion);
+				ejercicio31();
+				System.out.println(msjPrincipal);
+			} else if (resultado.equals("32")) {
+				System.out.println(msjEjecucion);
+				ejercicio32();
+				System.out.println(msjPrincipal);
+			} else if (resultado.equals("33")) {
+				System.out.println(msjEjecucion);
+				ejercicio33();
+				System.out.println(msjPrincipal);
+			} else if (resultado.equals("34")) {
+				System.out.println(msjEjecucion);
+				ejercicio34();
+				System.out.println(msjPrincipal);
+			} else if (resultado.equals("35")) {
+				System.out.println(msjEjecucion);
+				ejercicio35();
+				System.out.println(msjPrincipal);
+			} else if (resultado.equals("36")) {
+				System.out.println(msjEjecucion);
+				ejercicio36();
+				System.out.println(msjPrincipal);
+			} else if (resultado.equals("37")) {
+				System.out.println(msjEjecucion);
+				ejercicio37();
+				System.out.println(msjPrincipal);
+			} else if (resultado.equals("38")) {
+				System.out.println(msjEjecucion);
+				ejercicio38();
+				System.out.println(msjPrincipal);
+			} else {
+				System.out.println("La opcion ingresada no es valida. \n"
+						+ "Debe ingresar un numero del 22 al 38 inclusive para ejecutar el ejercicio correspondiente o 'salir' o 'exit' para terminar.");	
+			}
+			resultado = input.nextLine();
 		}
 	}
 }
