@@ -243,7 +243,7 @@ public class Actividad3 {
 	 * Realizá este ejercicio en dos versiones (A y B): con ciclo while y con ciclo
 	 * do-while.
 	 */
-	public static void ejercicio31() {
+	public static void ejercicio31A() {
 		
 		//OPCION A: CICLO WHILE.
 		System.out.println("-------------------\nejercicio con WHILE\n-------------------");
@@ -262,8 +262,11 @@ public class Actividad3 {
 			System.out.println("Usted ingreso: " + opcion + ".\n¿Deseás continuar? [S/N]");
 			continuar = input.nextLine().toUpperCase();
 		}
+	}
+		
+		
+	public static void ejercicio31B() {		
 		System.out.println("-------------------\nejercicio con DO-WHILE\n-------------------");
-		//OPCION B: CICLO DO-WHILE.
 		String continuar2 = "";
 			do {
 				System.out.println("ingrese una opcion:");
@@ -390,11 +393,12 @@ public class Actividad3 {
 	public static void ejercicio36() {
 		int numero = 0;
 		int cant = 0;
+		final int PROMEDIO_MAX = 20;
 		System.out.println("Bienvenido! Usted podra ingresar numeros mientras el promedio de todo sea menor a 20");
 		do {
 			numero += Integer.parseInt(input.nextLine());
 			cant++;
-		} while (numero/cant < 20);
+		} while (numero/cant < PROMEDIO_MAX);
 		if (cant == 1) {
 		System.out.println("Usted ingreso " + cant + " numero.");
 		} else {
@@ -440,16 +444,18 @@ public class Actividad3 {
 		String tmpUsuario = "";
 		String tmpContraseña = "";
 		int intentos = 0;
+		boolean accesoConcedido;
 		
-		while (!tmpUsuario.equals(usuario) && !tmpContraseña.equals(contraseña) && intentos < 3) {
+		do{
 			System.out.println("Ingrese su nombre de usuario:");
 			tmpUsuario = input.nextLine();
 			System.out.println("Ingrese su contraseña:");
 			tmpContraseña = input.nextLine();
+			accesoConcedido = tmpUsuario.equals(usuario) && tmpContraseña.equals(contraseña);
 			intentos++;
-		}
+		} while (!accesoConcedido && intentos < 3);
 		
-		if(tmpUsuario.equals(usuario) && tmpContraseña.equals(contraseña)) {
+		if(accesoConcedido) {
 			System.out.println("Acceso concedido");
 		} else {
 			System.out.println("Se ha bloqueado la cuenta");
@@ -511,9 +517,21 @@ public class Actividad3 {
 				ejercicio30();
 				System.out.println(msjPrincipal);
 			} else if (resultado.equals("31")) {
-				System.out.println(msjEjecucion);
-				ejercicio31();
-				System.out.println(msjPrincipal);
+				System.out.println("¿Que variante del ejercicio desea ejecutar? Ingrese 'A' para la variante WHILE, y 'B' para la variante DO-WHILE");
+				String variante = input.nextLine().toUpperCase();
+				while(!variante.equals("A") && !variante.equals("B")) {
+					System.out.println("La variante ingresada no es valida. Recuerde: 'A' para la variante WHILE, y 'B' para la variante DO-WHILE");
+					variante = input.nextLine().toUpperCase();
+				}
+				if(variante.equals("A")) {
+					System.out.println(msjEjecucion);
+					ejercicio31A();
+					System.out.println(msjPrincipal);
+				} else {
+					System.out.println(msjEjecucion);
+					ejercicio31B();
+					System.out.println(msjPrincipal);
+				}
 			} else if (resultado.equals("32")) {
 				System.out.println(msjEjecucion);
 				ejercicio32();
